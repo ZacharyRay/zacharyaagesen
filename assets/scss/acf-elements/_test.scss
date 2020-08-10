@@ -1,0 +1,459 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  $openSans: 'Open Sans', Helvetica, Arial, sans-serif;
+  body {
+    background: #15181A;
+    font-family: $openSans;
+  }
+  
+  .skw-pages {
+    overflow: hidden;
+    position: relative;
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+  }
+  
+  $skewDeg: 18deg;
+  $magicVH: 32.4vh; // this number is magic and depends on skew angle
+  $scrollTime: 1s;
+  
+  .skw-page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+  
+    &__half {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100vh;
+      transition: transform $scrollTime;
+  
+      &--left {
+        left: 0;
+        transform: translate3d(-$magicVH, 100%, 0);
+          }
+  
+      &--right {
+        left: 50%;
+        transform: translate3d($magicVH, -100%, 0);
+      }
+  
+      .skw-page.active & {
+        transform: translate3d(0,0,0);
+      }
+    }
+    .mobile-text{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      text-shadow: 2px 2px 8px black;
+      @include min-screen(1030px){
+        display: none;
+      }
+    }
+  
+    &__skewed {
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      width: 173%;
+      height: 100%;
+      transform: skewX($skewDeg * -1);
+      background: #000;
+      @include min-screen(1030px){
+        width: 140%;
+      }
+  
+      .skw-page__half--left & {
+        left: -72%;
+        @include min-screen(1030px){
+            left: -40%;
+        }
+      }
+      .skw-page__half--right & {
+        right: -72%;
+        @include min-screen(1030px){
+            right: -40%;
+        }
+      }
+    }
+  
+    &__content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-flow: column wrap;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      padding: 0 30%;
+      color: #fff;
+      transform: skewX($skewDeg);
+      transition: transform $scrollTime, opacity $scrollTime;
+      background-size: cover;
+      a{
+        color: #ffffff;
+        display: none;
+        @include min-screen(1030px){
+          display: block;
+        }
+      }
+  
+      .skw-page__half--left & {
+        padding-left: 30%;
+        padding-right: 30%;
+        transform-origin: 100% 0;
+      }
+      .skw-page__half--right & {
+        padding-left: 30%;
+        padding-right: 30%;
+        transform-origin: 0 100%;
+      }
+  
+      .skw-page.inactive & {
+        opacity: 0.5;
+        transform: skewX($skewDeg) scale(0.95);
+      }
+    }
+  
+    &__heading {
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 25px;
+      text-align: center;
+    }
+  
+    &__description {
+      font-size: 18px;
+      text-align: center;
+      a{
+        color: #ffffff;
+      }
+    }
+    
+    &__link {
+      color: #FFA0A0;
+    }
+  
+    &-1 {
+      .skw-page__half--left .skw-page__content {
+        background-image: url('https://www.inplainview.dk/wp-content/uploads/2020/05/IMG_5219.jpg');
+        opacity: 0.7;
+        background-size: contain;
+        background-repeat: repeat;
+        @include min-screen(1030px){
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      .skw-page__half--right .skw-page__content {
+        background: lighten(#1C1C1C, 5%);
+      }
+    }
+    &-2 {
+      .skw-page__half--left .skw-page__content {
+        background: lighten(#1C1C1C, 5%);
+      }
+      .skw-page__half--right .skw-page__content {
+        background-image: url('https://www.inplainview.dk/wp-content/uploads/2020/05/fims-portefolio-scaled.jpg');
+        opacity: 0.7;
+      }
+      .skw-page__half--right .skw-page__content:hover{
+        opacity: 0.3;
+      }
+    }
+    &-3 {
+      .skw-page__half--left .skw-page__content {
+        background-image: url('https://www.inplainview.dk/wp-content/uploads/2020/05/v1@0.5x.jpg');
+        opacity: 0.7;
+      }
+      .skw-page__half--left .skw-page__content:hover{
+        opacity: 0.3;
+      }
+      .skw-page__half--right .skw-page__content {
+        background: lighten(#1C1C1C, 5%);
+      }
+    }
+    &-4 {
+      .skw-page__half--left .skw-page__content {
+        background: lighten(#1C1C1C, 5%);
+      }
+      .skw-page__half--right .skw-page__content {
+        background-image: url('https://www.inplainview.dk/wp-content/uploads/2020/05/moster-logo-ny2.png');
+        opacity: 0.7;
+      }
+      .skw-page__half--right .skw-page__content:hover{
+        opacity: 0.3;
+      }
+    }
+    &-5 {
+      .skw-page__half--left .skw-page__content {
+        background-image: url('https://www.inplainview.dk/wp-content/uploads/2020/05/IMG_5221.jpg');
+        background-size: contain;
+        background-repeat: repeat;
+        @include min-screen(1030px){
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+      .skw-page__half--right .skw-page__content {
+        background: lighten(#1C1C1C, 5%);
+      }
+    }
+    .skw-page__heading{
+      display: none;
+      @include min-screen(1030px){
+        display: block;
+      }
+    }
+    .skw-page__description{
+      display: none;
+      @include min-screen(1030px){
+        display: block;
+      }
+    }
+    .skw-page__mobile-heading {
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 25px;
+      text-align: center;
+      width: 70%;
+      @include min-screen(1030px){
+        display: none;
+      }
+    }
+    .skw-page__mobile-description{
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      font-size: 15px;
+      text-align: center;
+      width: 70%;
+      a{
+        color: #ffffff;
+      }
+      @include min-screen(1030px){
+        display: none;
+      }
+    }
+  }
+  
+//scrolling 
+
+    #scroll-box{
+
+      @include min-screen(1030px){
+        justify-content: flex-end; 
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        bottom: 53px;
+        width: 100%;
+        z-index: 10;
+      }
+      #scroll {
+        display: block;
+        position: absolute;
+        z-index: 9;
+        right: unset;
+        width: 70px;
+        opacity: 0.5;
+        animation: bouncing 2s infinite;
+          p{
+            color: #ffffff;
+          }
+    }
+    
+    //frames
+
+  @keyframes bouncing{
+    0%   { transform: scale(1,1)      translateY(0); }
+   10%  { transform: scale(1.1,.9)   translateY(0); }
+   30%  { transform: scale(.9,1.1)   translateY(-20px); }
+   50%  { transform: scale(1.05,.95) translateY(0); }
+   57%  { transform: scale(1,1)      translateY(-3px); }
+   64%  { transform: scale(1,1)      translateY(0); }
+   100% { transform: scale(1,1)      translateY(0); }
+  }
+}
+
+// prevnextbtn
+
+#btnprevnext{
+  justify-content: flex-end; 
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 53px;
+  width: 100%;
+  z-index: 10;
+  @include min-screen(1030px){
+    display: none;
+  }
+  #btnnext, #btnprev{
+    display: block;
+    position: absolute;
+    z-index: 9;
+    right: unset;
+    width: 70px;
+    opacity: 0.5;
+    animation: bouncing 2s infinite;
+    bottom: 20px;
+    background-color: black;
+    height: 70px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+          p{
+            color: #ffffff;
+          }
+  }
+  #btnnext{
+    bottom: -42px;
+    right: 10px;
+  }
+  #btnprev{
+    bottom: 42px;
+    right: 10px;
+  }
+}
+
+
+// page 2
+  .skw-page-2{
+    .mobile-text{
+      display: none;
+      a{
+        color: #ffffff;
+        font-size: 1.3rem;
+        @include min-screen(1030px){
+          display: none;
+        }
+      }
+    }
+  }
+  .skw-page-2.active{
+    .mobile-text{
+      @include min-screen(1030px){
+        display: none;
+      }
+      display: flex;
+      animation-name: textease;
+      animation-duration: 2s;
+    }
+  }
+  .skw-page-2.inactive{
+    .mobile-text{
+      display: none;
+    }
+  }
+// page 3
+  .skw-page-3{
+    .mobile-text{
+      display: none;
+      a{
+        color: #ffffff;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        @include min-screen(1030px){
+          display: none;
+        }
+      }
+    }
+  }
+  .skw-page-3.active{
+    .mobile-text{
+      @include min-screen(1030px){
+        display: none;
+      }
+      display: flex;
+      animation-name: textease;
+      animation-duration: 2s;
+    }
+  }
+  .skw-page-3.inactive{
+    .mobile-text{
+      display: none;
+    }
+  }
+
+  // page 3
+
+  .skw-page-4{
+    .mobile-text{
+      display: none;
+      a{
+        color: #ffffff;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        @include min-screen(1030px){
+          display: none;
+        }
+      }
+    }
+  }
+  .skw-page-4.active{
+    .mobile-text{
+      @include min-screen(1030px){
+        display: none;
+      }
+      display: flex;
+      animation-name: textease;
+      animation-duration: 2s;
+    }
+  }
+  .skw-page-4.inactive{
+    .mobile-text{
+      display: none;
+    }
+  }
+
+  // page 4
+
+  .skw-page-5{
+    .mobile-text{
+      display: none;
+      a{
+        color: #ffffff;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        @include min-screen(1030px){
+          display: none;
+        }
+      }
+    }
+  }
+  .skw-page-5.active{
+    .mobile-text{
+      @include min-screen(1030px){
+        display: none;
+      }
+      display: flex;
+      animation-name: textease;
+      animation-duration: 2s;
+    }
+  }
+  .skw-page-5.inactive{
+    .mobile-text{
+      display: none;
+    }
+  }
+
+  @keyframes textease{
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+  }

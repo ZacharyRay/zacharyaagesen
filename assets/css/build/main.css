@@ -1,0 +1,368 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  background: #15181A;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+
+.skw-pages {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  /* Fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100); }
+
+.skw-page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 9; }
+  .skw-page__half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    transition: transform 1s; }
+    .skw-page__half--left {
+      left: 0;
+      transform: translate3d(-32.4vh, 100%, 0); }
+    .skw-page__half--right {
+      left: 50%;
+      transform: translate3d(32.4vh, -100%, 0); }
+    .skw-page.active .skw-page__half {
+      transform: translate3d(0, 0, 0); }
+  .skw-page .mobile-text {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px black; }
+    @media screen and (min-width: 1030px) {
+      .skw-page .mobile-text {
+        display: none; } }
+  .skw-page__skewed {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 173%;
+    height: 100%;
+    transform: skewX(-18deg);
+    background: #000; }
+    @media screen and (min-width: 1030px) {
+      .skw-page__skewed {
+        width: 140%; } }
+    .skw-page__half--left .skw-page__skewed {
+      left: -72%; }
+      @media screen and (min-width: 1030px) {
+        .skw-page__half--left .skw-page__skewed {
+          left: -40%; } }
+    .skw-page__half--right .skw-page__skewed {
+      right: -72%; }
+      @media screen and (min-width: 1030px) {
+        .skw-page__half--right .skw-page__skewed {
+          right: -40%; } }
+  .skw-page__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 30%;
+    color: #fff;
+    transform: skewX(18deg);
+    transition: transform 1s, opacity 1s;
+    background-size: cover; }
+    .skw-page__content a {
+      color: #ffffff;
+      display: none; }
+      @media screen and (min-width: 1030px) {
+        .skw-page__content a {
+          display: block; } }
+    .skw-page__half--left .skw-page__content {
+      padding-left: 30%;
+      padding-right: 30%;
+      transform-origin: 100% 0; }
+    .skw-page__half--right .skw-page__content {
+      padding-left: 30%;
+      padding-right: 30%;
+      transform-origin: 0 100%; }
+    .skw-page.inactive .skw-page__content {
+      opacity: 0.5;
+      transform: skewX(18deg) scale(0.95); }
+  .skw-page__heading {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align: center; }
+  .skw-page__description {
+    font-size: 18px;
+    text-align: center; }
+    .skw-page__description a {
+      color: #ffffff; }
+  .skw-page__link {
+    color: #FFA0A0; }
+  .skw-page-1 .skw-page__half--left .skw-page__content {
+    background-image: url("https://www.inplainview.dk/wp-content/uploads/2020/05/IMG_5219.jpg");
+    opacity: 0.7;
+    background-size: contain;
+    background-repeat: repeat; }
+    @media screen and (min-width: 1030px) {
+      .skw-page-1 .skw-page__half--left .skw-page__content {
+        background-size: cover;
+        background-repeat: no-repeat; } }
+  .skw-page-1 .skw-page__half--right .skw-page__content {
+    background: #292929; }
+  .skw-page-2 .skw-page__half--left .skw-page__content {
+    background: #292929; }
+  .skw-page-2 .skw-page__half--right .skw-page__content {
+    background-image: url("https://www.inplainview.dk/wp-content/uploads/2020/05/fims-portefolio-scaled.jpg");
+    opacity: 0.7; }
+  .skw-page-2 .skw-page__half--right .skw-page__content:hover {
+    opacity: 0.3; }
+  .skw-page-3 .skw-page__half--left .skw-page__content {
+    background-image: url("https://www.inplainview.dk/wp-content/uploads/2020/05/v1@0.5x.jpg");
+    opacity: 0.7; }
+  .skw-page-3 .skw-page__half--left .skw-page__content:hover {
+    opacity: 0.3; }
+  .skw-page-3 .skw-page__half--right .skw-page__content {
+    background: #292929; }
+  .skw-page-4 .skw-page__half--left .skw-page__content {
+    background: #292929; }
+  .skw-page-4 .skw-page__half--right .skw-page__content {
+    background-image: url("https://www.inplainview.dk/wp-content/uploads/2020/05/moster-logo-ny2.png");
+    opacity: 0.7; }
+  .skw-page-4 .skw-page__half--right .skw-page__content:hover {
+    opacity: 0.3; }
+  .skw-page-5 .skw-page__half--left .skw-page__content {
+    background-image: url("https://www.inplainview.dk/wp-content/uploads/2020/05/IMG_5221.jpg");
+    background-size: contain;
+    background-repeat: repeat; }
+    @media screen and (min-width: 1030px) {
+      .skw-page-5 .skw-page__half--left .skw-page__content {
+        background-size: cover;
+        background-repeat: no-repeat; } }
+  .skw-page-5 .skw-page__half--right .skw-page__content {
+    background: #292929; }
+  .skw-page .skw-page__heading {
+    display: none; }
+    @media screen and (min-width: 1030px) {
+      .skw-page .skw-page__heading {
+        display: block; } }
+  .skw-page .skw-page__description {
+    display: none; }
+    @media screen and (min-width: 1030px) {
+      .skw-page .skw-page__description {
+        display: block; } }
+  .skw-page .skw-page__mobile-heading {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-align: center;
+    width: 70%; }
+    @media screen and (min-width: 1030px) {
+      .skw-page .skw-page__mobile-heading {
+        display: none; } }
+  .skw-page .skw-page__mobile-description {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    width: 70%; }
+    .skw-page .skw-page__mobile-description a {
+      color: #ffffff; }
+    @media screen and (min-width: 1030px) {
+      .skw-page .skw-page__mobile-description {
+        display: none; } }
+
+@media screen and (min-width: 1030px) {
+  #scroll-box {
+    justify-content: flex-end;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 53px;
+    width: 100%;
+    z-index: 10; } }
+
+#scroll-box #scroll {
+  display: block;
+  position: absolute;
+  z-index: 9;
+  right: unset;
+  width: 70px;
+  opacity: 0.5;
+  animation: bouncing 2s infinite; }
+  #scroll-box #scroll p {
+    color: #ffffff; }
+
+@keyframes bouncing {
+  0% {
+    transform: scale(1, 1) translateY(0); }
+  10% {
+    transform: scale(1.1, 0.9) translateY(0); }
+  30% {
+    transform: scale(0.9, 1.1) translateY(-20px); }
+  50% {
+    transform: scale(1.05, 0.95) translateY(0); }
+  57% {
+    transform: scale(1, 1) translateY(-3px); }
+  64% {
+    transform: scale(1, 1) translateY(0); }
+  100% {
+    transform: scale(1, 1) translateY(0); } }
+
+#btnprevnext {
+  justify-content: flex-end;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 53px;
+  width: 100%;
+  z-index: 10; }
+  @media screen and (min-width: 1030px) {
+    #btnprevnext {
+      display: none; } }
+  #btnprevnext #btnnext, #btnprevnext #btnprev {
+    display: block;
+    position: absolute;
+    z-index: 9;
+    right: unset;
+    width: 70px;
+    opacity: 0.5;
+    animation: bouncing 2s infinite;
+    bottom: 20px;
+    background-color: black;
+    height: 70px;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; }
+    #btnprevnext #btnnext p, #btnprevnext #btnprev p {
+      color: #ffffff; }
+  #btnprevnext #btnnext {
+    bottom: -42px;
+    right: 10px; }
+  #btnprevnext #btnprev {
+    bottom: 42px;
+    right: 10px; }
+
+.skw-page-2 .mobile-text {
+  display: none; }
+  .skw-page-2 .mobile-text a {
+    color: #ffffff;
+    font-size: 1.3rem; }
+    @media screen and (min-width: 1030px) {
+      .skw-page-2 .mobile-text a {
+        display: none; } }
+
+.skw-page-2.active .mobile-text {
+  display: flex;
+  animation-name: textease;
+  animation-duration: 2s; }
+  @media screen and (min-width: 1030px) {
+    .skw-page-2.active .mobile-text {
+      display: none; } }
+
+.skw-page-2.inactive .mobile-text {
+  display: none; }
+
+.skw-page-3 .mobile-text {
+  display: none; }
+  .skw-page-3 .mobile-text a {
+    color: #ffffff;
+    font-size: 1.1rem;
+    white-space: nowrap; }
+    @media screen and (min-width: 1030px) {
+      .skw-page-3 .mobile-text a {
+        display: none; } }
+
+.skw-page-3.active .mobile-text {
+  display: flex;
+  animation-name: textease;
+  animation-duration: 2s; }
+  @media screen and (min-width: 1030px) {
+    .skw-page-3.active .mobile-text {
+      display: none; } }
+
+.skw-page-3.inactive .mobile-text {
+  display: none; }
+
+.skw-page-4 .mobile-text {
+  display: none; }
+  .skw-page-4 .mobile-text a {
+    color: #ffffff;
+    font-size: 1.1rem;
+    white-space: nowrap; }
+    @media screen and (min-width: 1030px) {
+      .skw-page-4 .mobile-text a {
+        display: none; } }
+
+.skw-page-4.active .mobile-text {
+  display: flex;
+  animation-name: textease;
+  animation-duration: 2s; }
+  @media screen and (min-width: 1030px) {
+    .skw-page-4.active .mobile-text {
+      display: none; } }
+
+.skw-page-4.inactive .mobile-text {
+  display: none; }
+
+.skw-page-5 .mobile-text {
+  display: none; }
+  .skw-page-5 .mobile-text a {
+    color: #ffffff;
+    font-size: 1.1rem;
+    white-space: nowrap; }
+    @media screen and (min-width: 1030px) {
+      .skw-page-5 .mobile-text a {
+        display: none; } }
+
+.skw-page-5.active .mobile-text {
+  display: flex;
+  animation-name: textease;
+  animation-duration: 2s; }
+  @media screen and (min-width: 1030px) {
+    .skw-page-5.active .mobile-text {
+      display: none; } }
+
+.skw-page-5.inactive .mobile-text {
+  display: none; }
+
+@keyframes textease {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+#main-container {
+  width: 100vw;
+  height: 100vh; }
+  #main-container #grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }
+    #main-container #grid #content-left {
+      background-image: url("http://www.inplainview.dk/wp-content/uploads/2020/05/IMG_5219.jpg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover; }
+    #main-container #grid #content-right {
+      background-color: green; }
+
+.up {
+  transform: translateY(-100%); }
+
